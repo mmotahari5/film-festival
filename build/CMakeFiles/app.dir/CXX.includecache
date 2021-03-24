@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/mmotahari5/Programming/Advanced_Programming/sheigaraii/Tamrin01/include/Member.hpp
+iostream
+-
+string
+-
+
+/home/mmotahari5/Programming/Advanced_Programming/sheigaraii/Tamrin01/include/nonMember.hpp
+iostream
+-
+string
+-
+random
+-
+Member.hpp
+/home/mmotahari5/Programming/Advanced_Programming/sheigaraii/Tamrin01/include/Member.hpp
+
+/home/mmotahari5/Programming/Advanced_Programming/sheigaraii/Tamrin01/src/main.cpp
+iostream
+-
+string
+-
+../include/Member.hpp
+/home/mmotahari5/Programming/Advanced_Programming/sheigaraii/Tamrin01/include/Member.hpp
+../include/nonMember.hpp
+/home/mmotahari5/Programming/Advanced_Programming/sheigaraii/Tamrin01/include/nonMember.hpp
+
