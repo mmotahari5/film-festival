@@ -7,12 +7,6 @@
 #include <cstdlib>
 using namespace std;
 
-void swap(int &x,int &y){
-	int temp = x;
-	x = y;
-	y = temp;
-}
-
 void SpellCheck(string &input){
 	ui len = input.length();
 	for(size_t i = 0;i < len;i++){
