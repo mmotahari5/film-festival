@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.0)
+project(AP)
+set(CMAKE_CXX_STANDARD 14)
+add_executable(app src/main.cpp src/Member.cpp src/nonMember.cpp)
+include_directories(include)
