@@ -152,76 +152,97 @@ void CommandSeparator(string commands[],string input,ui numberOfWords){
 }
 
 Film* doCommand(string* commands,Film* arrayOfFilms,ui &lengthOfArray,ui numberOfWords){
-		if(commands[0] == "add"){
-			if(numberOfWords != 7){
-				cout << "Your input is invalid, please enter command correctly." << endl;
-				if(lengthOfArray == 0){
-					return nullptr;
-				}
-				return arrayOfFilms;
-			}
-			stringstream geek1(commands[2]);
-			ui score;
-			geek1 >> score;
-			stringstream geek2(commands[3]);
-			ui data;
-			geek2 >> data;
-			stringstream geek3(commands[5]);
-			ui time;
-			geek3 >> time;
-			Film newFilm;
-			newFilm.set_name(commands[1]);
-			newFilm.set_score(score);
-			newFilm.set_data(data);
-			newFilm.set_director(commands[4]);
-			newFilm.set_time(time);
-			newFilm.set_country(commands[6]);
-			newFilm.set_id();
-			arrayOfFilms = add(arrayOfFilms,newFilm,lengthOfArray);
-			lengthOfArray++;
-			return arrayOfFilms;
-		}
-		if(commands[0] == "show"){
-			show(arrayOfFilms,commands[1],lengthOfArray);
+	if(commands[0] == "add"){
+		if(numberOfWords != 7){
+			cout << "Your input is invalid, please enter command correctly." << endl;
 			if(lengthOfArray == 0){
 				return nullptr;
 			}
 			return arrayOfFilms;
 		}
-		if(commands[0] == "show-all"){
-			cout << left << setw(25) <<"name"<<setw(8) <<"|score" << setw(8) << "|data" << setw(26) << "|director"  << setw(8) << "|time"  << setw(16) << "|country" << setw(8) << "|id"<<endl;
-			cout << endl;
-
-			for(size_t i = 0;i < lengthOfArray;i++){
-				cout << left << setw(25) << arrayOfFilms[i].get_name()  <<"|"<< setw(7) << arrayOfFilms[i].get_score()  <<"|"<<  setw(7) << arrayOfFilms[i].get_data()  <<"|"<<  setw(25) << arrayOfFilms[i].get_director()  <<"|"<< setw(7) << arrayOfFilms[i].get_time()  <<"|"<<  setw(15) << arrayOfFilms[i].get_country()  <<"|"<<  setw(7) << arrayOfFilms[i].get_id()<< endl;
-			}
-			return arrayOfFilms;
-		}
-		if(commands[0]=="remove"){
-			if(lengthOfArray == 0){
-				cout << "array is empty!!" << endl;
-				return arrayOfFilms;
-			}
-			if(numberOfWords == 1){
-				cout << "command invalid." <<endl;
-				return arrayOfFilms;
-			}
-			arrayOfFilms = remove(arrayOfFilms,commands[1],lengthOfArray);
-			return arrayOfFilms;
-		}
-		if(commands[0]=="sort-by"){
-			arrayOfFilms = sortBy(arrayOfFilms,commands[1],lengthOfArray);
-			return arrayOfFilms;
-		}
-		if(commands[0]=="average-score"){
-			cout <<"average score: " << averageScore(arrayOfFilms,lengthOfArray) << endl;
-			return arrayOfFilms;
-		}
-		if(commands[0]=="help"){
-			help();
+		stringstream geek1(commands[2]);
+		ui score;
+		geek1 >> score;
+		stringstream geek2(commands[3]);
+		ui data;
+		geek2 >> data;
+		stringstream geek3(commands[5]);
+		ui time;
+		geek3 >> time;
+		Film newFilm;
+		newFilm.set_name(commands[1]);
+		newFilm.set_score(score);
+		newFilm.set_data(data);
+		newFilm.set_director(commands[4]);
+		newFilm.set_time(time);
+		newFilm.set_country(commands[6]);
+		newFilm.set_id();
+		arrayOfFilms = add(arrayOfFilms,newFilm,lengthOfArray);
+		lengthOfArray++;
+		return arrayOfFilms;
+	}
+	if(commands[0] == "show"){
+		show(arrayOfFilms,commands[1],lengthOfArray);
+		if(lengthOfArray == 0){
 			return nullptr;
 		}
 		return arrayOfFilms;
+	}
+	if(commands[0] == "show-all"){
+		cout << left << setw(25) <<"name"<<setw(8) <<"|score" << setw(8) << "|data" << setw(26) << "|director"  << setw(8) << "|time"  << setw(16) << "|country" << setw(8) << "|id"<<endl;
+		cout << endl;
+
+		for(size_t i = 0;i < lengthOfArray;i++){
+			cout << left << setw(25) << arrayOfFilms[i].get_name()  <<"|"<< setw(7) << arrayOfFilms[i].get_score()  <<"|"<<  setw(7) << arrayOfFilms[i].get_data()  <<"|"<<  setw(25) << arrayOfFilms[i].get_director()  <<"|"<< setw(7) << arrayOfFilms[i].get_time()  <<"|"<<  setw(15) << arrayOfFilms[i].get_country()  <<"|"<<  setw(7) << arrayOfFilms[i].get_id()<< endl;
+		}
+		if(lengthOfArray == 0){
+			return nullptr;
+		}
+		return arrayOfFilms;
+	}
+
+	if(commands[0]=="remove"){
+		if(lengthOfArray == 0){
+			cout << "array is empty!!" << endl;
+			return nullptr;
+		}
+		if(numberOfWords == 1){
+			cout << "command invalid." <<endl;
+			if(legthOfArray == 0){
+				return nullptr;
+			}
+			return arrayOfFilms;
+		}
+		arrayOfFilms = remove(arrayOfFilms,commands[1],lengthOfArray);
+		return arrayOfFilms;
+	}
+
+	if(commands[0]=="sort-by"){
+		if(lengthOfArray == 0){
+			return nullptr;
+		}
+		arrayOfFilms = sortBy(arrayOfFilms,commands[1],lengthOfArray);
+		return arrayOfFilms;
+	}
+
+	if(commands[0]=="average-score"){
+		if(lengthOfArray == 0){
+			return nullptr;
+		}
+		cout <<"average score: " << averageScore(arrayOfFilms,lengthOfArray) << endl;
+		return arrayOfFilms;
+	}
+
+	if(commands[0]=="help"){
+		help();
+		return nullptr;
+	}
+	else {
+		if(lengthOfArray == 0){
+			return nullptr;
+		}
+		return arrayOfFilms;
+	}
 }
 
 void help(){
