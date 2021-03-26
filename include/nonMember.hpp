@@ -15,8 +15,6 @@ void CommandSeparator(std::string commands[],std::string,ui);
 
 void getInput(std::string&,ui&);
 
-Film* testfilm (Film*);
-
 void show(Film*,std::string,ui);
 
 Film* doCommand(std::string*,Film*,ui&,ui);
