@@ -7,12 +7,6 @@
 #include <cstdlib>
 using namespace std;
 
-void swap(int &x,int &y){
-	int temp = x;
-	x = y;
-	y = temp;
-}
-
 void SpellCheck(string &input){
 	ui len = input.length();
 	for(size_t i = 0;i < len;i++){
@@ -159,6 +153,13 @@ void CommandSeparator(string commands[],string input,ui numberOfWords){
 
 Film* doCommand(string* commands,Film* arrayOfFilms,ui &lengthOfArray,ui numberOfWords){
 		if(commands[0] == "add"){
+			if(numberOfWords != 7){
+				cout << "Your input is invalid, please enter command correctly." << endl;
+				if(lengthOfArray == 0){
+					return nullptr;
+				}
+				return arrayOfFilms;
+			}
 			stringstream geek1(commands[2]);
 			ui score;
 			geek1 >> score;
@@ -182,6 +183,9 @@ Film* doCommand(string* commands,Film* arrayOfFilms,ui &lengthOfArray,ui numberO
 		}
 		if(commands[0] == "show"){
 			show(arrayOfFilms,commands[1],lengthOfArray);
+			if(lengthOfArray == 0){
+				return nullptr;
+			}
 			return arrayOfFilms;
 		}
 		if(commands[0] == "show-all"){
@@ -212,6 +216,10 @@ Film* doCommand(string* commands,Film* arrayOfFilms,ui &lengthOfArray,ui numberO
 		if(commands[0]=="average-score"){
 			cout <<"average score: " << averageScore(arrayOfFilms,lengthOfArray) << endl;
 			return arrayOfFilms;
+		}
+		if(commands[0]=="help"){
+			help();
+			return nullptr;
 		}
 		return arrayOfFilms;
 }

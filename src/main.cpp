@@ -16,11 +16,6 @@ int main(){
 
 
 	Film * array = new Film[array_len];
-	if(commands[0]=="help"){
-		help();
-		getInput(input,numberOfWords);
-		CommandSeparator(commands,input,numberOfWords);
-	}
 
 	while(commands[0] != "exit"){
 		array = doCommand(commands,array,array_len,numberOfWords);
@@ -28,11 +23,6 @@ int main(){
 
 		getInput(input,numberOfWords);
 		CommandSeparator(commands,input,numberOfWords);
-		if(commands[0]=="help"){
-			help();
-			getInput(input,numberOfWords);
-			CommandSeparator(commands,input,numberOfWords);
-		}
 	}
 
 	delete [] array;

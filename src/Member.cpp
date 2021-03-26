@@ -7,7 +7,12 @@ void Film::set_name(string Name){
 	name = Name;
 }
 void Film::set_score(ui Score){
-	score = Score;
+	if((Score >= 0)&&(Score <= 100)){
+		score = Score;
+	}
+	else{
+		cout << "Score is out of range\nScore minimum: 0\tScore maximum: 100" << endl;
+	}
 }
 void Film::set_data (ui Data){
 	data = Data;
